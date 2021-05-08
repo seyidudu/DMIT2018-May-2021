@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\dummy.cs" />
-    <Compile Include="DAL\dummy.cs" />
+    <Compile Include="DAL\ChinookSystemContext.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

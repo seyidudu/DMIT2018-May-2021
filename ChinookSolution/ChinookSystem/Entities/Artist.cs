@@ -17,6 +17,7 @@ namespace ChinookSystem.Entities
         private string _Name;
         [Key]
         public int ArtistId { get; set; }
+        [Required(ErrorMessage = "Artist Name is required")]
         [StringLength(120, ErrorMessage = "Artist name is limited to 120 Characters.")]
         public string Name 
         { 
