@@ -99,13 +99,9 @@
                                 Samples</a>
                             <div class="dropdown-menu" aria-labelledby="navbarSubMenu">
                                 <a class="dropdown-item"
-                                        href="~/SamplePages/TestPage.aspx"
+                                        href="~/SamplePages/AlbumsForArtist.aspx"
                                         style="color:black" runat="server">
-                                   Test Page</a>
-                                <a class="dropdown-item"
-                                        href="~/SamplePages/ArtistAlbums.aspx"
-                                        style="color:black" runat="server">
-                                   List All Artist ALbums</a>
+                                   ALbums For Artist </a>
                                 <a class="dropdown-item"
                                         href="~/SamplePages/SearchByDDL.aspx"
                                         style="color:black" runat="server">
