@@ -31,6 +31,10 @@ namespace ChinookSystem.Entities
             set { _ReleaseLabel = string.IsNullOrEmpty(value) ? null : value; }
         }
 
+        // Navigational properties
+        // Navigational properties creates a virtual relational preseents  that 
+        //      you can use in your application.
+
         public virtual Artist Artist { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
