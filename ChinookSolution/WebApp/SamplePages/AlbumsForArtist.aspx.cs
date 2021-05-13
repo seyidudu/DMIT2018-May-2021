@@ -18,11 +18,15 @@ namespace WebApp.SamplePages
         {
 
         }
+        protected void SelectCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            MessageUserControl.HandleDataBoundException(e);
+        }
 
         protected void FetchAlbums_Click(object sender, EventArgs e)
         {if(ArtistList.SelectedIndex == 0)
             {
-                Message.Text = "No Artist has been Selected";
+                MessageUserControl.ShowInfo("Artist Selection", "No Artist has been Selected");
             }
             else
             {
@@ -42,6 +46,7 @@ namespace WebApp.SamplePages
 
         protected void RefreshList()
         {
+            //error handling for class library calls
             MessageUserControl.TryRun(() =>
             {
                 AlbumController sysmgr = new AlbumController();
@@ -51,9 +56,10 @@ namespace WebApp.SamplePages
             },"Artist Albums List","View artist albums");
             
         }
-        protected void SelectCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+
+        protected void ArtistListODS_Selected(object sender, ObjectDataSourceStatusEventArgs e)
         {
-            MessageUserControl.HandleDataBoundException(e);
+
         }
     }
 }

@@ -28,6 +28,7 @@ namespace ChinookSystem.BLL
                                                          ValueField = row.ArtistId,
                                                          DisplayField = row.Name
                                                      });
+
                                                     //from x in context.Artists
                                                      //select new SelectionList
                                                      //{
