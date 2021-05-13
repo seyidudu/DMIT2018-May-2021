@@ -5,21 +5,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 namespace ChinookSystem.Entities
 {
-
-    internal partial class Artist
+    internal partial class Playlist
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Artist()
+        public Playlist()
         {
-            Albums = new HashSet<Album>();
+            PlaylistTracks = new HashSet<PlaylistTrack>();
         }
 
-        public int ArtistId { get; set; }
+        public int PlaylistId { get; set; }
 
+        [Required]
         [StringLength(120)]
         public string Name { get; set; }
 
+        [StringLength(120)]
+        public string UserName { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Album> Albums { get; set; }
+        public virtual ICollection<PlaylistTrack> PlaylistTracks { get; set; }
     }
 }

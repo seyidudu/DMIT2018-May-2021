@@ -1,8 +1,15 @@
 ﻿<%@ Page Title="Albums for Artist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlbumsForArtist.aspx.cs" Inherits="WebApp.SamplePages.AlbumsForArtist" %>
+
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>
         Albums for Artist
     </h1>
+    <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
+    <asp:Label ID="Message" runat="server"></asp:Label>
+    <br /><br />
+
     <div class="row">
         <div class="offset-2">
             
@@ -11,12 +18,15 @@
                 DataSourceID="ArtistListODS" 
                 DataTextField="DisplayField" 
                 DataValueField="ValueField"
-                AppendDataBoundItem="true">
+                AppendDataBoundItems="true">
                 <asp:ListItem Value="0">Select Artist...</asp:ListItem>
             </asp:DropDownList>&nbsp;&nbsp;
-            <asp:LinkButton ID="FetchAlbums" runat="server">FetchAlbums</asp:LinkButton>
+            <asp:LinkButton ID="FetchAlbums" runat="server" 
+                OnClick="FetchAlbums_Click">Fetch Albums</asp:LinkButton>
    
-    <asp:GridView ID="AlbumsofArtistList" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="AlbumsofArtistList" runat="server" 
+        AutoGenerateColumns="False" 
+        OnPageIndexChanging="AlbumsofArtistList_PageIndexChanging" AllowPaging="True" PageSize="4">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
@@ -30,7 +40,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Year">
                 <ItemTemplate>
-                <asp:Label runat="server" Text='<%#Eval("ReleaserYear") %>'></asp:Label>
+                <asp:Label runat="server" Text='<%#Eval("ReleaseYear") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Label">
@@ -42,6 +52,7 @@
          <EmptyDataTemplate>
                 Artist has no albums on file
             </EmptyDataTemplate>
+        <PagerSettings Mode="NumericFirstLast" NextPageText="Next" PageButtonCount="3" PreviousPageText="Back" />
     </asp:GridView>
     <br />
     <br /><br />
