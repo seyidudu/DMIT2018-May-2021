@@ -57,7 +57,25 @@ namespace ChinookSystem.BLL
             }
         }
         #endregion
-
+        public List<ArtistAlbumsByTitleandYear> Album_ListArtistAlbumsByTitleandYear()
+        {
+            using (var context = new ChinookSystemContext())
+            {
+                IEnumerable<ArtistAlbumsByTitleandYear> results = context.Albums
+                            .OrderBy(x => x.Artist.Name)
+                            .ThenBy(x => x.Title)
+                            .ThenByDescending(x => x.ReleaseLabel)
+                            .Where(x => x.ReleaseYear >= 1980 && x.ReleaseYear < 1990)
+                            .Select(x => new ArtistAlbumsByTitleandYear
+                            {
+                                Artist = x.Artist.Name,
+                                Title = x.Title,
+                                Year = x.ReleaseYear,
+                                Label = x.ReleaseLabel == null ? "Unknown" : x.ReleaseLabel
+                            });
+                return results.ToList();
+            }
+        }
         #region Add, Update and Delete CRUD
         //Add
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
